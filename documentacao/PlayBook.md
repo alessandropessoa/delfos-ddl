@@ -136,8 +136,23 @@ reidentification_risk:
 | `python evaluate.py --dir ./output-exp-oracle` | Executa o experimento **apenas no diretório especificado**. |
 | `python evaluate.py --all` | Varre **todos os diretórios** `output-exp*` e executa o experimento em cada um, gerando um resumo consolidado. |
 | `python evaluate.py --config evaluate/config_risk.yaml --all` | Usa um arquivo de configuração alternativo (ex: para teste de risco de reidentificação). |
-
+| `python evaluate.py --dir ./output-exp-oracle` | Para executar todos os experimentos de uma só vez e obter um relatório consolidado em Markdown, utilize a fla |
 ---
+
+### ▶️ Ao usar a opção --full-validation é gerado uma arquivo na pasta:
+
+`
+./output-exp-oracle/full_validation_report_YYYYMMDD_HHMMSS.md
+`
+
+**Esse relatório contém:**
+- Veredito final (APROVADO ou REPROVADO).
+
+- Detalhamento de cada experimento com métricas e critérios.
+
+- Recomendações automáticas em caso de falha.
+
+
 
 ## 📊 Fase 3: Guia Detalhado por Tipo de Experimento
 
