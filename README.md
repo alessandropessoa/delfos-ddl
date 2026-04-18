@@ -1,18 +1,12 @@
-Aqui está uma proposta de **README.md** profissional, estruturada para o GitHub, utilizando elementos visuais, badges e uma organização lógica que destaca tanto o valor técnico quanto a metodologia científica (DSR) do seu projeto.
 
----
-
-# README.md
-
-```markdown
-# 🛡️ DELFOS v2: Analisador, Anonimizador e Validador Científico de DDL
+# 🛡️ DELFOS: Analisador, Anonimizador e Validador Científico de DDL
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![LGPD Compliance](https://img.shields.io/badge/Compliance-LGPD-green.svg)](#)
 [![Methodology: DSR](https://img.shields.io/badge/Methodology-DSR-orange.svg)](#)
 
-O **DELFOS v2** é uma ferramenta avançada de engenharia de dados projetada para permitir a análise de arquiteturas de bancos de dados legados por Large Language Models (LLMs) sem comprometer a segurança ou violar a LGPD. Através de um pipeline de anonimização estrutural, o DELFOS transforma DDLs complexos em representações matemáticas isomórficas (hashes), garantindo que a inteligência da topologia permaneça intacta enquanto os dados sensíveis são protegidos.
+O **DELFOS** é uma ferramenta avançada de engenharia de dados projetada para permitir a análise de arquiteturas de bancos de dados legados por Large Language Models (LLMs) sem comprometer a segurança ou violar a LGPD. Através de um pipeline de anonimização estrutural, o DELFOS transforma DDLs complexos em representações matemáticas isomórficas (hashes), garantindo que a inteligência da topologia permaneça intacta enquanto os dados sensíveis são protegidos.
 
 ---
 
