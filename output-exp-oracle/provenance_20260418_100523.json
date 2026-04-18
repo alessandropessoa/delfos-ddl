@@ -1,0 +1,25 @@
+{
+    "experiment_date": "2026-04-18T10:05:23.332417",
+    "user": "alessandro",
+    "system": {
+        "os": "Linux",
+        "node": "alessandro-pc",
+        "python_version": "3.12.3"
+    },
+    "inputs": {
+        "original_schema": "output-exp-oracle/05_structure_original.json",
+        "masked_schema": "output-exp-oracle/03_structure_masked.json",
+        "mapping_file": "output-exp-oracle/02_mapping.json"
+    },
+    "sre_weights": {
+        "pk": 2.0,
+        "fk": 1.5,
+        "idx": 1.0,
+        "joins": 3.0
+    },
+    "results": {
+        "pearson_correlation": 1.0,
+        "p_value": 0.0,
+        "isomorphism_preserved": true
+    }
+}

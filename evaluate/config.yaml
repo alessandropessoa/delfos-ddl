@@ -1,0 +1,80 @@
+# ==============================================================================
+# DELFOS Evaluator · Configuração de Experimento
+# ==============================================================================
+# Este arquivo define os parâmetros do experimento científico a ser executado.
+# O campo 'type' determina qual análise será realizada. Cada tipo possui
+# parâmetros específicos nas seções correspondentes.
+# ==============================================================================
+
+experiment:
+  # Metadados do experimento (usados para proveniência e documentação)
+  name: "Validação de Isomorfismo Topológico"
+  description: >
+    Avalia se a estrutura relacional do banco de dados (medida pelo SRE)
+    é preservada após o mascaramento dos nomes. O objetivo é garantir que
+    a "assinatura geométrica" do esquema permaneça estatisticamente idêntica,
+    permitindo que modelos de linguagem interpretem o DDL mascarado de forma
+    equivalente ao original, sem risco de alucinações estruturais.
+  goal: "Correlação de Pearson > 0,95 com p-valor < 0,05"
+  type: "isomorphism"   # Opções: isomorphism, masking_efficacy, cardinality, 
+                        #         performance, reidentification_risk
+
+# ------------------------------------------------------------------------------
+# Pesos para o SRE (Structural Relevance Score)
+# Utilizados apenas em experimentos do tipo 'isomorphism'
+# ------------------------------------------------------------------------------
+sre_weights:
+  pk: 2.0      # Chaves Primárias (integridade fundamental)
+  fk: 1.5      # Chaves Estrangeiras (relacionamentos)
+  idx: 1.0     # Índices (otimização de consultas)
+  joins: 3.0   # Frequência de joins (hotspots de acesso)
+
+# ------------------------------------------------------------------------------
+# Configurações para o tipo 'masking_efficacy'
+# Avalia a efetividade do processo de anonimização
+# ------------------------------------------------------------------------------
+masking_efficacy:
+  metrics:
+    - substitution_rate       # % de identificadores substituídos
+    - entropy_gain            # ganho de entropia dos nomes
+    - unique_ratio            # razão de unicidade (antes/depois)
+  report_top_occurrences: 10  # exibir os 10 termos mais frequentes
+
+# ------------------------------------------------------------------------------
+# Configurações para o tipo 'cardinality'
+# Verifica se a quantidade de objetos do esquema foi preservada
+# ------------------------------------------------------------------------------
+cardinality:
+  compare:
+    - tables
+    - columns
+    - primary_keys
+    - foreign_keys
+    - indexes
+    - views
+  tolerance: 0   # margem de erro permitida (0 = deve ser exatamente igual)
+
+# ------------------------------------------------------------------------------
+# Configurações para o tipo 'performance'
+# Mede o impacto do mascaramento no tempo de parsing/geração
+# ------------------------------------------------------------------------------
+performance:
+  iterations: 10        # número de execuções para média
+  warmup: true          # executa uma rodada de aquecimento
+  measure:
+    - parsing_time_ms
+    - memory_usage_mb
+
+# ------------------------------------------------------------------------------
+# Configurações para o tipo 'reidentification_risk'
+# Estima o risco de reidentificação dos nomes originais a partir dos mascarados
+# ------------------------------------------------------------------------------
+reidentification_risk:
+  k_anonymity_threshold: 5     # k desejado para considerar seguro
+  quasi_identifiers:           # atributos considerados quasi-identificadores
+    - table_name_length
+    - column_name_length
+    - prefix_pattern
+  attack_models:
+    - frequency_analysis
+    - pattern_matching

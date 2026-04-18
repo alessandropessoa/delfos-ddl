@@ -1,0 +1,198 @@
+{
+  "tables": {
+    "EMPRESA": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "ID_EMPRESA",
+          "type": "NUMBER(10)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "CNPJ",
+          "type": "VARCHAR2(14)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "RAZAO_SOCIAL",
+          "type": "VARCHAR2(100)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "DATA_CADASTRO",
+          "type": "DATE",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "PK_EMPRESA",
+        "columns": [
+          "ID_EMPRESA"
+        ]
+      }
+    },
+    "MEDICAO_FISICA": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "ID_MEDICAO",
+          "type": "NUMBER(10)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "ID_OBRA",
+          "type": "NUMBER(10)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "ANO_REFERENCIA",
+          "type": "NUMBER(4)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "MES_REFERENCIA",
+          "type": "NUMBER(2)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "VALOR_EXECUTADO",
+          "type": "NUMBER(15,2)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "DATA_APROVACAO",
+          "type": "DATE",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "PK_MEDICAO",
+        "columns": [
+          "ID_MEDICAO"
+        ]
+      }
+    },
+    "OBRA": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "ID_OBRA",
+          "type": "NUMBER(10)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "ID_EMPRESA",
+          "type": "NUMBER(10)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "NOME_OBRA",
+          "type": "VARCHAR2(150)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "ORCAMENTO_TOTAL",
+          "type": "NUMBER(15,2)",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "STATUS",
+          "type": "VARCHAR2(20)",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "PK_OBRA",
+        "columns": [
+          "ID_OBRA"
+        ]
+      }
+    }
+  },
+  "indexes": [
+    {
+      "name": "IDX_MEDICAO_TEMPO",
+      "table": "MEDICAO_FISICA",
+      "columns": [
+        "ANO_REFERENCIA",
+        "MES_REFERENCIA"
+      ],
+      "unique": false
+    },
+    {
+      "name": "IDX_OBRA_STATUS",
+      "table": "OBRA",
+      "columns": [
+        "STATUS"
+      ],
+      "unique": false
+    }
+  ],
+  "foreign_keys": [
+    {
+      "constraint": "FK_OBRA_EMPRESA",
+      "from_table": "OBRA",
+      "from_columns": [
+        "ID_EMPRESA"
+      ],
+      "to_table": "EMPRESA",
+      "to_columns": [
+        "ID_EMPRESA"
+      ]
+    },
+    {
+      "constraint": "FK_MEDICAO_OBRA",
+      "from_table": "MEDICAO_FISICA",
+      "from_columns": [
+        "ID_OBRA"
+      ],
+      "to_table": "OBRA",
+      "to_columns": [
+        "ID_OBRA"
+      ]
+    }
+  ],
+  "join_statistics": {
+    "table_join_frequency": {},
+    "column_join_frequency": {}
+  }
+}

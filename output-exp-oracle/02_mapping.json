@@ -1,0 +1,39 @@
+{
+  "hash_algorithm": "sha256",
+  "hash_length": 8,
+  "mask_mode": "HASH_FULL",
+  "tables": {
+    "EMPRESA": "T_a75d07f8",
+    "OBRA": "T_e2098dbf",
+    "MEDICAO_FISICA": "T_7ee4e828"
+  },
+  "columns": {
+    "EMPRESA.ID_EMPRESA": "C_835190e8",
+    "EMPRESA.CNPJ": "C_9d10d4e4",
+    "EMPRESA.RAZAO_SOCIAL": "C_291b360b",
+    "EMPRESA.DATA_CADASTRO": "C_6d1312e8",
+    "OBRA.ID_OBRA": "C_cf4a6e1b",
+    "OBRA.ID_EMPRESA": "C_835190e8",
+    "OBRA.NOME_OBRA": "C_4f8b69bf",
+    "OBRA.ORCAMENTO_TOTAL": "C_3c1a4c64",
+    "OBRA.STATUS": "C_8c2e4a03",
+    "MEDICAO_FISICA.ID_MEDICAO": "C_18aa7f48",
+    "MEDICAO_FISICA.ID_OBRA": "C_cf4a6e1b",
+    "MEDICAO_FISICA.ANO_REFERENCIA": "C_74507a61",
+    "MEDICAO_FISICA.MES_REFERENCIA": "C_3e546edb",
+    "MEDICAO_FISICA.VALOR_EXECUTADO": "C_f02308d1",
+    "MEDICAO_FISICA.DATA_APROVACAO": "C_3129d9ad"
+  },
+  "indexes": {
+    "IDX_MEDICAO_TEMPO": "I_f40c92fe",
+    "IDX_OBRA_STATUS": "I_ea0675ce"
+  },
+  "constraints": {
+    "PK_EMPRESA": "K_e5a6eda7",
+    "UQ_EMP_CNPJ": "K_b69e49ae",
+    "PK_OBRA": "K_060c120c",
+    "FK_OBRA_EMPRESA": "K_604f6592",
+    "PK_MEDICAO": "K_a05e7e3d",
+    "FK_MEDICAO_OBRA": "K_013e5099"
+  }
+}

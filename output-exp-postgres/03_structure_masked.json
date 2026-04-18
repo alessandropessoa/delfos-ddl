@@ -1,0 +1,177 @@
+{
+  "tables": {
+    "T_7EE4E828": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "C_CF4A6E1B",
+          "type": "INT",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_74507A61",
+          "type": "INT",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_3E546EDB",
+          "type": "INT",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_F02308D1",
+          "type": "NUMERIC(15,2)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_3129D9AD",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "K_a05e7e3d",
+        "columns": [
+          "ID_MEDICAO"
+        ]
+      }
+    },
+    "T_A75D07F8": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "C_9D10D4E4",
+          "type": "VARCHAR(14)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_291B360B",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_6D1312E8",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "K_e5a6eda7",
+        "columns": [
+          "C_835190E8"
+        ]
+      }
+    },
+    "T_E2098DBF": {
+      "type": "TABLE",
+      "schema": null,
+      "tablespace": null,
+      "comment": null,
+      "columns": [
+        {
+          "name": "C_835190E8",
+          "type": "INT",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_4F8B69BF",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_3C1A4C64",
+          "type": "NUMERIC(15,2)",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        },
+        {
+          "name": "C_8C2E4A03",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "default": null,
+          "comment": null
+        }
+      ],
+      "primary_key": {
+        "constraint": "K_060c120c",
+        "columns": [
+          "C_CF4A6E1B"
+        ]
+      }
+    }
+  },
+  "indexes": [
+    {
+      "name": "I_f40c92fe",
+      "table": "T_7EE4E828",
+      "columns": [
+        "C_74507A61",
+        "C_3E546EDB"
+      ],
+      "unique": false
+    },
+    {
+      "name": "I_ea0675ce",
+      "table": "T_E2098DBF",
+      "columns": [
+        "C_8C2E4A03"
+      ],
+      "unique": false
+    }
+  ],
+  "foreign_keys": [
+    {
+      "constraint": "K_604f6592",
+      "from_table": "T_E2098DBF",
+      "from_columns": [
+        "C_835190E8"
+      ],
+      "to_table": "T_A75D07F8",
+      "to_columns": [
+        "C_835190E8"
+      ]
+    },
+    {
+      "constraint": "K_013e5099",
+      "from_table": "T_7EE4E828",
+      "from_columns": [
+        "C_CF4A6E1B"
+      ],
+      "to_table": "T_E2098DBF",
+      "to_columns": [
+        "C_CF4A6E1B"
+      ]
+    }
+  ],
+  "join_statistics": {
+    "table_join_frequency": {},
+    "column_join_frequency": {}
+  }
+}
