@@ -59,7 +59,7 @@ python delfos.py pipeline seu_schema.sql --output-dir ./output-experimento --mod
 ### 3. Validação de Isomorfismo e Efetividade
 Execute o avaliador para obter o laudo científico de preservação estrutural:
 ```bash
-python evaluate.py --auto
+python evaluate.py --all
 ```
 
 ---
