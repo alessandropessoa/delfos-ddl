@@ -1,4 +1,8 @@
+Aqui está a versão revisada do `README.md`, agora incluindo a referência ao arquivo de interpretação do relatório de validação completa e pequenos ajustes para alinhamento com o playbook estendido e a flag `--full-validation`.
 
+---
+
+```markdown
 # 🛡️ DELFOS: Analisador, Anonimizador e Validador Científico de DDL
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
@@ -21,8 +25,6 @@ Garantir a reprodutibilidade e conformidade no uso de IA para arquitetura de sof
 
 ## 🏗️ Fluxo de Trabalho (Pipeline)
 
-
-
 ```mermaid
 graph LR
     A[DDL Original] --> B[delfos.py pipeline]
@@ -42,7 +44,7 @@ graph LR
 ### 1. Instalação
 ```bash
 # Clone o repositório
-git clone [https://github.com/seu-usuario/analisador-delfos.git](https://github.com/seu-usuario/analisador-delfos.git)
+git clone https://github.com/seu-usuario/analisador-delfos.git
 cd analisador-delfos
 
 # Instale as dependências
@@ -57,25 +59,43 @@ python delfos.py pipeline seu_schema.sql --output-dir ./output-experimento --mod
 ```
 
 ### 3. Validação de Isomorfismo e Efetividade
-Execute o avaliador para obter o laudo científico de preservação estrutural:
+
+#### Validação Rápida (um único experimento)
+```bash
+python evaluate.py --dir ./output-experimento
+```
+
+#### Validação Completa (todos os critérios de uma só vez) 🆕
+Execute uma bateria completa de testes e obtenha um relatório consolidado em Markdown com veredito final:
+```bash
+python evaluate.py --dir ./output-experimento --full-validation
+```
+O relatório será salvo como `full_validation_report_YYYYMMDD_HHMMSS.md` dentro do diretório do experimento.
+
+#### Execução em Lote (múltiplos experimentos)
 ```bash
 python evaluate.py --all
 ```
+
+> 💡 **Dica:** Para entender como interpretar o relatório gerado pelo `--full-validation`, consulte o arquivo de exemplo:  
+> [`output-exp-adservice/interpretacao-do-relatorio-full-validation-ll.md`](https://github.com/alessandropessoa/delfos-ddl/blob/main/output-exp-adservice/interpretacao-do-relatorio-full-validation-ll.md)  
+> Ele explica, passo a passo, o significado de cada métrica e as ações corretivas recomendadas.
 
 ---
 
 ## 🧪 Validação Científica (Módulo Evaluate)
 
-O DELFOS utiliza o **Score de Relevância Estática (SRE)** para quantificar a importância de cada tabela na topologia.
+O DELFOS utiliza o **Score de Relevância Estática (SRE)** para quantificar a importância de cada tabela na topologia. O avaliador suporta cinco tipos de experimento, definidos no arquivo `evaluate/config.yaml`:
 
 | Tipo de Experimento | Objetivo | Métrica Principal |
 |:--- |:--- |:--- |
 | **Isomorfismo** | Preservação da topologia relacional | Correlação de Pearson ($r > 0.95$) |
 | **Masking Efficacy** | Efetividade da ofuscação | Ganho de Entropia e Taxa de Substituição |
 | **Cardinalidade** | Integridade da contagem de objetos | Comparação exata de entidades |
+| **Performance** | Overhead computacional | Tempo de parsing e uso de memória |
 | **Re-identification Risk** | Risco de reversão/ataque | k-anonymity score |
 
-
+Para detalhes completos sobre cada experimento, pesos ajustáveis e interpretação de resultados, consulte o **Playbook de Execução Completo** (fornecido separadamente).
 
 ---
 
@@ -98,7 +118,9 @@ python delfos.py unmask resposta_llm.md ./output/02_mapping.json --output analis
 - `01_masked.sql`: DDL pronto para envio ao LLM.
 - `02_mapping.json`: Chave privada para desmascaramento (NUNCA compartilhe).
 - `03_structure_masked.json`: Metadados da topologia ofuscada.
-- `provenance_*.md`: Relatório de proveniência para auditoria científica.
+- `05_structure_original.json`: Metadados da topologia original (ground truth).
+- `full_validation_report_*.md`: Relatório consolidado de validação (quando usando `--full-validation`).
+- `provenance_*.md` / `provenance_*.json`: Relatórios de proveniência para auditoria científica.
 
 ---
 
@@ -109,7 +131,16 @@ Este projeto segue os princípios da **Design Science Research (DSR)**, focando 
 - **LGPD:** Garante que metadados que possam identificar processos de negócio sejam removidos.
 - **Isomorfismo:** Mantém a assinatura geométrica do grafo de tabelas.
 
+---
 
+## 📚 Documentação Adicional
 
+- [Playbook de Execução Completo (PDF/Markdown)](./docs/playbook.md) – Guia detalhado com todas as fases do pipeline e configurações avançadas.
+- [Interpretação de Relatório Full-Validation (exemplo)](./output-exp-adservice/interpretacao-do-relatorio-full-validation-ll.md) – Explicação prática de como analisar os resultados da validação completa.
+
+---
+
+**Versão do README:** 2.1  
+**Última Atualização:** Abril de 2026
 ```
 
