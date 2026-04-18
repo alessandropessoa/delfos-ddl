@@ -129,8 +129,8 @@ Este projeto segue os princípios da **Design Science Research (DSR)**, focando 
 ---
 
 ## 📚 Documentação Adicional
-
-- [Playbook de Execução Completo (PDF/Markdown)](./docs/playbook.md) – Guia detalhado com todas as fases do pipeline e configurações avançadas.
+https://github.com/alessandropessoa/delfos-ddl/blob/main
+- [Playbook de Execução Completo (PDF/Markdown)](./documentacao/PlayBook.md) – Guia detalhado com todas as fases do pipeline e configurações avançadas.
 - [Interpretação de Relatório Full-Validation (exemplo)](./output-exp-adservice/interpretacao-do-relatorio-full-validation-ll.md) – Explicação prática de como analisar os resultados da validação completa.
 
 ---
