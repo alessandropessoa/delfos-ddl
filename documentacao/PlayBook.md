@@ -1,6 +1,6 @@
 
 
-# 📖 Playbook de Execução Completo: DELFOS v2 (Análise, Anonimização e Validação Científica de DDL)
+# 📖 Playbook de Execução Completo: DELFOS  (Análise, Anonimização e Validação Científica de DDL)
 
 **Objetivo:** Guia definitivo para executar a anonimização de esquemas de banco de dados, extrair métricas topológicas, validar a preservação semântica e a eficácia da ofuscação sob múltiplos critérios, garantindo reprodutibilidade (metodologia DSR) e conformidade com a LGPD para uso seguro com Large Language Models (LLMs).
 
@@ -16,7 +16,7 @@
 ```bash
 cd ~/Documentos/CASNAV/casnav-13/ferramentas-produzidas/analisador-delfos
 pip install -r requirements.txt
-pip install sqlglot scipy numpy pyyaml   # validação científica
+pip install sqlglot scipy numpy pyyaml   
 ```
 
 **3. Preparação do Artefato de Entrada:**
@@ -164,7 +164,7 @@ Quando o LLM fornecer a análise arquitetural utilizando os nomes falsos (ex: "A
 # Salve a resposta do LLM em analise_arquitetural.md
 python delfos.py unmask ./output-exp-adService/analise_arquitetural.md ./output-exp-adService/02_mapping.json --output analise_traduzida_adService.md
 
-python delfos.py unmask analise_arquitetural.md ./output-exp-oracle/02_mapping.json --output analise_traduzida.md
+python delfos.py unmask analise_arquitetural.md ./output-exp-postgres/02_mapping.json --output analise_traduzida.md
 ```
 
 ---
@@ -183,4 +183,3 @@ graph LR
     H --> I[Insights de Negócio Reais]
 ```
 
-Este playbook garante que todas as etapas sejam reprodutíveis, cientificamente fundamentadas e alinhadas com os requisitos de conformidade e segurança para uso de LLMs em ambientes regulados.
